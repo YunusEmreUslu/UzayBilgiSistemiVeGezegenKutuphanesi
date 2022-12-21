@@ -1,6 +1,8 @@
 package com.turgay;
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.Random;
+import java.util.concurrent.ThreadLocalRandom;
 
 public class Main {
 
@@ -54,8 +56,59 @@ public class Main {
                     break;
 
                 case 2:
+                    //yeniGezegen.setisim(yeni isim) print yeniGezegen.toString
                     System.out.println("Gezegen ekle kısmı");
                     Gezegen yeniGezegen = new Gezegen();
+                    Scanner input = new Scanner(System.in);
+
+                    System.out.println("Yeni gezegenin ismini giriniz:");
+                    String yeniIsim= input.nextLine();
+                    yeniGezegen.setIsim(yeniIsim);
+                    System.out.println("Yeni gezegenin ismi: " + yeniIsim);
+
+                    System.out.println("Yeni gezegenin yer çekimi değerini m/s^2 cinsinden giriniz:");
+                    float yeniYerCekimi= input.nextFloat();
+                    yeniGezegen.setYerCekimi(yeniYerCekimi);
+                    System.out.println("Yeni gezegenin yer çekimi değeri: " + yeniYerCekimi);
+
+                    System.out.println("Yeni gezegenin uzaklık değerini giriniz:");
+                    float yeniUzaklik = input.nextFloat();
+                    yeniGezegen.setUzaklik(yeniUzaklik);
+                    System.out.println("Yeni gezegenin uzaklık değeri: " + yeniUzaklik);
+
+                    System.out.println("Yeni gezegene gönderilen uydu sayısını giriniz:");
+                    int yeniGonderilenUyduSayisi = input.nextInt();
+                    yeniGezegen.setGonderilenUyduSayisi(yeniGonderilenUyduSayisi);
+                    System.out.println("Yeni gezegene gönderilmiş olan uydu sayısı: " + yeniGonderilenUyduSayisi);
+
+                    System.out.println("Yeni gezegenin sıcaklık değerini giriniz:");
+                    float yeniSicaklik = input.nextFloat();
+                    yeniGezegen.setSicaklik(yeniSicaklik);
+                    System.out.println("Yeni gezegenin sıcaklık değeri: " + yeniSicaklik);
+
+                    System.out.println("Yeni gezegenin atmosferi var mı?: (var veya yok yazınız)");
+                    String yeniAtmosferVarMi = input.next();
+                        if (yeniAtmosferVarMi.equalsIgnoreCase("var")) {
+                        yeniGezegen.setAtmosferVarMi(true);
+                        } else if (yeniAtmosferVarMi.equalsIgnoreCase("yok")) {
+                        yeniGezegen.setAtmosferVarMi(false);
+                        }
+                    System.out.println("Yeni gezegenin atmosferi " +yeniAtmosferVarMi+ ".");
+
+                    System.out.println("Yeni gezegenin radyasyon oranını (0-100) giriniz:");
+                    float yeniRadyasyonOrani = input.nextFloat();
+                    // değerler 0 ve 100 arasında değil ise invalid diyip tekrar sor
+                    yeniGezegen.setRadyasyonOrani(yeniRadyasyonOrani);
+                    System.out.println("Yeni gezegenin radyasyon oranı: " + yeniRadyasyonOrani);
+
+                    System.out.println("Yeni gezegenin yüz ölçümü değerini giriniz:");
+                    float yeniYuzOlcumu = input.nextFloat();
+                    yeniGezegen.setYuzolcumu(yeniYuzOlcumu);
+                    System.out.println("Yeni gezegenin yüz ölçümü değeri: " + yeniYuzOlcumu);
+
+                    // buraya gezegende hangi gazlar bulunuyor onu alicak bir sey yap
+
+
 
                     /*
                         YUNUS
@@ -63,14 +116,58 @@ public class Main {
                         Gezegenin adı, uzaklığı vb. her şeyi alıp
                         yeni bir gezegen oluşturacağız, sonrasında onu veritabanına alttaki kod ekliyor zaten
                     */
-
+                    System.out.println(yeniGezegen.toString());
                     vt.gezegen_ekle(yeniGezegen);
                     System.out.println("Gezegen eklendi");
                     break;
-
+                // random gezegen olusturma case'i
                 case 3:
                     System.out.println("Rastgele gezegen oluştur kısmı");
                     Gezegen rastgeleGezegen = new Gezegen();
+                    Random random = new Random();
+                    float f = random.nextFloat();
+                    int i = random.nextInt(10) + 1;
+                    boolean b = random.nextBoolean();
+
+                    Scanner inputR = new Scanner(System.in);
+                    System.out.println("Yeni random gezegenin ismini giriniz:");
+                    String yeniRandomIsim= inputR.nextLine();
+                    rastgeleGezegen.setIsim(yeniRandomIsim);
+                    System.out.println("Yeni random gezegenin ismi: " + yeniRandomIsim);
+
+                    float rastgeleYerCekimi = f*100;
+                    rastgeleGezegen.setYerCekimi(rastgeleYerCekimi);
+                    System.out.println("Yeni random gezegenin ismi: " + rastgeleYerCekimi);
+
+                    float rastgeleUzaklik = f*200;
+                    rastgeleGezegen.setUzaklik(rastgeleUzaklik);
+                    System.out.println("Yeni random gezegenin uzaklık değeri: " + rastgeleUzaklik);
+
+                    int rastgeleGonderilenUyduSayisi = i;
+                    rastgeleGezegen.setGonderilenUyduSayisi(rastgeleGonderilenUyduSayisi);
+                    System.out.println("Yeni random  gezegene gönderilmiş olan uydu sayısı: " + rastgeleGonderilenUyduSayisi);
+
+                    float rastgeleSicaklik = f*1500;
+                    rastgeleGezegen.setSicaklik(rastgeleSicaklik);
+                    System.out.println("Yeni random gezegenin sıcaklık değeri: " + rastgeleSicaklik);
+
+                    boolean rastgeleAtmosferVarMi = b;
+                    if (b == true) {
+                        System.out.println("Yeni gezegenin atmosferi var.");
+                    } else {
+                        System.out.println("Yeni gezegenin atmosferi yok.");
+                    }
+                    rastgeleGezegen.setAtmosferVarMi(rastgeleAtmosferVarMi);
+
+                    float rastgeleRadyasyonOrani = f*100;
+                    rastgeleGezegen.setRadyasyonOrani(rastgeleRadyasyonOrani);
+                    System.out.println("Yeni random gezegenin radyasyon oranı: " + rastgeleRadyasyonOrani);
+
+                    float rastgeleYuzOlcumu = f*2500;
+                    rastgeleGezegen.setYuzolcumu(rastgeleYuzOlcumu);
+                    System.out.println("Yeni random gezegenin yüz ölçümü değeri: " + rastgeleYuzOlcumu);
+
+                    //rastgele gazlar icin bir sey
 
                     /*
                         YUNUS
@@ -78,11 +175,11 @@ public class Main {
                         o yüzden ikisini de senin yapman daha mantıklı olur abi
                         Bu sefer gezegen özellikleri kullanıcıdan alınarak değil de
                         rastgele olarak oluşsun.
-                        Mesela uzaklık (0-300 ışık yılı arasında random bir değer)
+                        Mesela uzaklık (0-200 ışık yılı arasında random bir değer)
                         Sıcaklık (-100 + 100 arasında bir değer vb.)
                         mantıklı bir biçimde random gezegen oluştursun burası
                     */
-
+                    System.out.println(rastgeleGezegen.toString());
                     vt.gezegen_ekle(rastgeleGezegen);
                     System.out.println("Gezegen eklendi");
                     break;

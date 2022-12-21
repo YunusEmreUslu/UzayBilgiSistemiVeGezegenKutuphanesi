@@ -94,7 +94,7 @@ public class Gezegen{
         this.sicaklik = sicaklik;
     }
 
-    public boolean isAtmosferVarMi() {
+    public boolean AtmosferVarMi() {
         return atmosferVarMi;
     }
 

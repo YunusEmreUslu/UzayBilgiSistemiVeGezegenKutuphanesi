@@ -40,7 +40,7 @@ public class Veritabani {
                         new DevDunyaGezegen("Gliese 1061 b", -10, null, 12, 0, -273, false,  5, 1.37f),
                         new DevDunyaGezegen("HD 136352 b", -10, null, 48, 0, 638, false,  5, 4.72f),
                         new DevDunyaGezegen("HD 20794 b", -10, null, 20, 0, 88, false,  5, 2.70f),
-                        new DevDunyaGezegen("Rho Coronae Borealis c", -10, null, 57, 0, 325, false, 5, 25)
+                        new DevDunyaGezegen("Rho Coronae Borealis c", -10, null, 57, 0, 325, false, 5, 125)
                 )
         );
     }
